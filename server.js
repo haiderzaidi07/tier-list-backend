@@ -5,69 +5,96 @@ const cors = require('cors')
 const ItemModel = require('./models/Items')
 require('dotenv').config()
 
-app.use(cors())
-app.use(express.json())
 
-mongoose.connect(process.env.DB_STRING, 
-    { useNewUrlParser: true}
-)
+app.use(express.json())
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+}))
+
+mongoose.connect(process.env.DB_STRING, { useNewUrlParser: true })
+.then(() => {
+    console.log("MongoDB Connected")
+})
+.catch(err => console.log(err))
 
 app.post('/addItem', async (req, res) => {
 
-    const name = req.body.name
-    const tier = req.body.tier
-    const item = new ItemModel({ name: name, tier: tier })
-    await item.save()
-    res.send(item)
+    const { name, tier } = req.body    
+    
+    try{
+        const item = new ItemModel({ name, tier })
+        await item.save()
+        res.status(200).json(item)
+    }
+    catch(err){
+        console.error(err)
+    }
+    
 })
 
 app.get('/', async (req, res) => {
     
-    const result = await ItemModel.find().clone()
-    res.send(result)
-})
-
-app.put('/upgrade', async (req, res) => {
-
-    const newTier = req.body.newTier
-    const id = req.body.id
-
     try{
-        await ItemModel.findById(id, (error, itemToUpgrade) => {
-            itemToUpgrade.tier = newTier
-            itemToUpgrade.save()
-        }).clone()
+        const items = await ItemModel.find()
+        res.status(200).json(items)
     }
     catch(err){
         console.error(err)
     }
+})
 
-    res.send("Upgraded")
+app.put('/upgrade', (req, res) => {
+
+    const { newTier, id } = req.body
+
+    try{
+        ItemModel.findById(id)
+        .then(itemToUpgrade => {
+            itemToUpgrade.tier = newTier
+            itemToUpgrade.save()
+
+            res.status(200).send({result: itemToUpgrade, message:"Upgraded Tier"})
+        })
+        .catch(err => console.error(err))
+        
+    }
+    catch(err){
+        console.error(err)
+    }
 })
 
 app.put('/downgrade', async (req, res) => {
     
-    const newTier = req.body.newTier
-    const id = req.body.id
-    
+    const { newTier, id } = req.body
+
     try{
-        await ItemModel.findById(id, (error, itemToUpgrade) => {
+        ItemModel.findById(id)
+        .then(itemToUpgrade => {
             itemToUpgrade.tier = newTier
             itemToUpgrade.save()
-        }).clone()
+
+            res.status(200).send({result: itemToUpgrade, message:"Downgraded Tier"})
+        })
+        .catch(err => console.error(err))
+        
     }
     catch(err){
         console.error(err)
     }
-    
-    res.send("Downgraded")
 })
 
 app.delete('/delete/:id', async (req, res) => {
     
-    const id = req.params.id
-    await ItemModel.findByIdAndRemove(id).exec()
-    res.send("Deleted")
+    const { id } = req.params
+    
+    try{
+        await ItemModel.findByIdAndRemove(id)
+        res.status(200).json({message:"Item Deleted Successfully"})
+    }
+    catch(err){
+        console.error(err)
+    }
 })
 
 app.listen(process.env.PORT, () =>{
