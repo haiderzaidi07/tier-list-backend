@@ -8,7 +8,7 @@ require('dotenv').config()
 
 app.use(express.json())
 app.use(cors({
-    origin: 'https://colorful-lamb-pinafore.cyclic.app/',
+    origin: 'http://localhost:3000',
     credentials: true
 }))
 
