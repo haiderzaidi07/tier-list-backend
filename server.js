@@ -12,15 +12,22 @@ app.use(cors({
     credentials: true
 }))
 
-mongoose.connect(process.env.DB_STRING, { useNewUrlParser: true })
-.then(() => {
-    console.log("MongoDB Connected")
-})
-.catch(err => console.log(err))
+const connectDB = async () => {
+    try {
+        const conn = await mongoose.connect(process.env.DB_STRING);
+        console.log(`MongoDB Connected: ${conn.connection.host}`);
+    } catch (error) {
+        console.log(error);
+        process.exit(1);
+    }
+}
 
 app.use('/', itemsRoutes)
 app.use('/users', userRoutes)
 
-app.listen(process.env.PORT, () =>{
-    console.log(`Listening on ${process.env.PORT}`)
+connectDB().then(() => {
+    app.listen(process.env.PORT, () => {
+        console.log(`Listening on ${process.env.PORT}`)
+    })
 })
+.catch(err => console.error(err))
