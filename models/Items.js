@@ -9,6 +9,10 @@ const ItemSchema = new mongoose.Schema({
     tier:{
         type: String,
         required: true
+    },
+    userID: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users'
     }
 })
 
