@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
 // Static Register Method
 userSchema.statics.register = async function (username, password, confirmPassword) {
     
-    if(!username || !password){
+    if(!username || !password || !confirmPassword){
         throw Error('All fields must be filled')
     }
 
