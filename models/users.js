@@ -5,12 +5,23 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
-        unique: true
+        unique: true // remove this and add email attribute containing this later
     },
     password: {
-        type: String,
-        required: true
-    }
+        type: String
+    },
+    profilePicture: {
+        type: String
+    },
+    googleId: {
+        type: String
+    },
+    githubId: {
+        type: String
+    },
+    discordId: {
+        type: String
+    },
 })
 
 // Static Register Method

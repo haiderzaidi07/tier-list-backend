@@ -1,7 +1,7 @@
 const User = require('../models/users')
 const jwt = require('jsonwebtoken')
 
-const createToken = (_id) => {
+const createToken = _id => {
     return jwt.sign({ _id }, process.env.SECRET, {expiresIn: '3d'})
 }
 
@@ -37,4 +37,28 @@ const registerUser = async (req, res) => {
     }
 }
 
-module.exports = { registerUser, loginUser }
+const loginGoogle = (req, res) => {
+
+    const { _id, username, profilePicture } = req.user
+    const token = createToken(_id)
+    // res.status(200).json({username, token, profilePicture})
+    res.redirect(`http://localhost:3000/users/login?username=${username}&token=${token}&profilePicture=${profilePicture}&flag=${true}`)
+}
+
+const loginGithub = (req, res) => {
+    
+    const { _id, username, profilePicture } = req.user
+    const token = createToken(_id)
+    // res.status(200).json({username, token, profilePicture})
+    res.redirect(`http://localhost:3000/users/login?username=${username}&token=${token}&profilePicture=${profilePicture}&flag=${true}`)
+}
+
+const loginDiscord = (req, res) => {
+    
+    const { _id, username, profilePicture } = req.user
+    const token = createToken(_id)
+    // res.status(200).json({username, token, profilePicture})
+    res.redirect(`http://localhost:3000/users/login?username=${username}&token=${token}&profilePicture=${profilePicture}&flag=${true}`)
+}
+
+module.exports = { registerUser, loginUser, loginGoogle, loginGithub, loginDiscord }

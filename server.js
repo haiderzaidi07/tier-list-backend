@@ -2,15 +2,29 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const cors = require('cors')
+const session = require('express-session')
+const passport = require('passport')
 const itemsRoutes = require('./routes/items')
 const userRoutes = require('./routes/users')
-require('dotenv').config()
+require('dotenv').config({ path: './config/.env' })
+require('./config/passport')
 
 app.use(express.json())
 app.use(cors({
-    origin: 'https://tier-list.netlify.app',
+    // origin: 'https://tier-list.netlify.app',
+    origin: 'http://localhost:3000',
     credentials: true
 }))
+
+app.use(session({
+    maxAge: 3 * 24 * 60 * 60 * 1000,
+    secret: process.env.COOKIE_KEY,
+    resave: false,
+    saveUninitialized: true,
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 const connectDB = async () => {
     try {
