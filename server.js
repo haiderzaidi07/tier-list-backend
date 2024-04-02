@@ -11,8 +11,8 @@ require('./config/passport')
 
 app.use(express.json())
 app.use(cors({
-    // origin: 'https://tier-list.netlify.app',
-    origin: 'http://localhost:3000',
+    origin: 'https://tier-list.netlify.app',
+    // origin: 'http://localhost:3000',
     credentials: true
 }))
 
