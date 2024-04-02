@@ -42,7 +42,7 @@ const loginGoogle = (req, res) => {
     const { _id, username, profilePicture } = req.user
     const token = createToken(_id)
     // res.status(200).json({username, token, profilePicture})
-    res.redirect(`http://localhost:3000/users/login?username=${username}&token=${token}&profilePicture=${profilePicture}&flag=${true}`)
+    res.redirect(`https://tier-list.netlify.app/users/login?username=${username}&token=${token}&profilePicture=${profilePicture}&flag=${true}`)
 }
 
 const loginGithub = (req, res) => {
@@ -50,7 +50,7 @@ const loginGithub = (req, res) => {
     const { _id, username, profilePicture } = req.user
     const token = createToken(_id)
     // res.status(200).json({username, token, profilePicture})
-    res.redirect(`http://localhost:3000/users/login?username=${username}&token=${token}&profilePicture=${profilePicture}&flag=${true}`)
+    res.redirect(`https://tier-list.netlify.app/users/login?username=${username}&token=${token}&profilePicture=${profilePicture}&flag=${true}`)
 }
 
 const loginDiscord = (req, res) => {
@@ -58,7 +58,7 @@ const loginDiscord = (req, res) => {
     const { _id, username, profilePicture } = req.user
     const token = createToken(_id)
     // res.status(200).json({username, token, profilePicture})
-    res.redirect(`http://localhost:3000/users/login?username=${username}&token=${token}&profilePicture=${profilePicture}&flag=${true}`)
+    res.redirect(`https://tier-list.netlify.app/users/login?username=${username}&token=${token}&profilePicture=${profilePicture}&flag=${true}`)
 }
 
 module.exports = { registerUser, loginUser, loginGoogle, loginGithub, loginDiscord }
