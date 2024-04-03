@@ -22,7 +22,7 @@ The live demo of this website can be accessed at: https://tier-list.netlify.app/
 
 **Client:** React, TypeScript, Redux, TailwindCSS
 
-**Server:** Node.js, Express, MongoDB, JWT, Passport
+**Server:** Node.js, Express, MongoDB, JWT, Passport.js
 
 
 ## Branches
@@ -47,6 +47,12 @@ Go to the project directory
 
 ```bash
   cd tier-list-backend/
+```
+
+Go to oauth branch
+
+```bash
+  git checkout oauth
 ```
 
 Install dependencies
