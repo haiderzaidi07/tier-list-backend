@@ -2,7 +2,7 @@
 
 An application for categorizing different items of a related class.
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Tier List GIF](https://github.com/haiderzaidi07/haiderzaidi07/blob/main/tierlist-new.gif?raw=true)
 
 This repository hosts the backend for the application, the frontend can be accessed [here](https://github.com/haiderzaidi07/tier-list-frontend)
 
@@ -13,7 +13,7 @@ The live demo of this website can be accessed at: https://tier-list.netlify.app/
 
 ## Features
 
-- CRUD Operations to add/upgrade/downgrade/delete items
+- CRUD operations to Add/Upgrade/Downgrade/Delete Items
 - OAuth2 support for Google, GitHub & Discord
 - Fully Responsive
 
@@ -27,7 +27,7 @@ The live demo of this website can be accessed at: https://tier-list.netlify.app/
 
 ## Branches
 
-The progress on this codebase is done in different branches:
+The codebase is split into different branches:
 
 - [main](https://github.com/haiderzaidi07/tier-list-backend)
 - [v2](https://github.com/haiderzaidi07/tier-list-backend/tree/v2)
