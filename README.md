@@ -95,7 +95,8 @@ Session Secret
 
 What did you learn while building this project? What challenges did you face and how did you overcome them?
 
-
 ## Further Optimizations
 
-What optimizations did you make in your code? E.g. refactors, performance improvements, accessibility
+- Better UI to show if a tier has no items
+- Drag and Drop feature for upgrading and downgrading items <!-- using beautiful dnd package -->
+- Improve error prevention for matching usernames across different providers
