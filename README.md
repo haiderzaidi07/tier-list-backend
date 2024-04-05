@@ -95,6 +95,7 @@ Session Secret
 
 - Learned to use Passport.js to add Google, GitHub, and Discord OAuth services
 - Learned to create responsive web apps using Tailwind
+- Learned to use Redux to improve state management
 
 
 ## Further Optimizations
