@@ -93,10 +93,13 @@ Session Secret
 
 ## Lessons Learned
 
-What did you learn while building this project? What challenges did you face and how did you overcome them?
+- Learned to use Passport.js to add Google, GitHub, and Discord OAuth services
+- Learned to create responsive web apps using Tailwind
+
 
 ## Further Optimizations
 
-- Better UI to show if a tier has no items
-- Drag and Drop feature for upgrading and downgrading items <!-- using beautiful dnd package -->
+- Better UI for Tiers having no Items
+- Drag and Drop feature for Upgrading and Downgrading Items <!-- using beautiful dnd package -->
 - Improve error prevention for matching usernames across different providers
+- Improve type safety of the backend using TypeScript
